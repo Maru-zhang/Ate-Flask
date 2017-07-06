@@ -9,7 +9,7 @@
         "program": "fully qualified path fo 'flask' executable. Generally located along with python interpreter",
         "cwd": "${workspaceRoot}",
         "env": {
-            "FLASK_APP": "${workspaceRoot}/quickstart/app.py"
+            "FLASK_APP": "${workspaceRoot}/quickstart/manager.py"
         },
         "args": [
             "run",
