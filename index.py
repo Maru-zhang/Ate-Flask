@@ -10,7 +10,7 @@ app = Flask(__name__)
 def wechat_auth():
     if request.method == 'GET':
         if len(request.args) > 3:
-            token = 'zhangibnhui'
+            token = 'zhangbinhui'
             query = request.args
             signature = query['signature']
             timestamp = query['timestamp']
