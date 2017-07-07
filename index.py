@@ -27,7 +27,16 @@ def wechat_auth():
                 return make_response("认证失败")
         else:
             return "认证失败"
-
+    else:
+        rec=request.stream.read()
+        xml_rec=ET.fromstring(rec)
+        tou = xml_rec.find('ToUserName').text
+        fromu = xml_rec.find('FromUserName').text
+        content = xml_rec.find('Content').text
+        xml_rep = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>"
+        response = make_response(xml_rep % (fromu,tou,str(int(time.time())),"哈哈哈哈"))
+        response.content_type='application/xml'
+        return response
 
 @app.route("/test",methods = ["GET"])
 def test():
